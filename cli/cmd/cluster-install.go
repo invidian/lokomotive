@@ -74,6 +74,11 @@ func runClusterInstall(cmd *cobra.Command, args []string) {
 		ctxLogger.Fatalf("Verify cluster installation: %v", err)
 	}
 
+	// TODO: Check what networking solution we use and update that.
+	for _, c := range []string{"kubernetes", "kubelet", "calico"} {
+		upgradeControlplaneComponent(c, kubeconfigPath, assetDir, ctxLogger, ex)
+	}
+
 	var componentsToInstall []string
 	for _, component := range lokoConfig.RootConfig.Components {
 		componentsToInstall = append(componentsToInstall, component.Name)
