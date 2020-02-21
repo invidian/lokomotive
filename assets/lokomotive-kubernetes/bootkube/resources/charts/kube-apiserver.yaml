@@ -15,5 +15,6 @@ apiserver:
   enableAggregation: ${enable_aggregation}
   serviceCIDR: ${service_cidr}
   trustedCertsDir: ${trusted_certs_dir}
+  replicas: ${replicas}
 podCheckpointer:
   image: ${pod_checkpointer_image}
